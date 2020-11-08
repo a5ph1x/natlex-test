@@ -1,5 +1,8 @@
 <div class="grid-container">
-  <app-selector (SelectChartType)="changeChartType($event)"></app-selector>
+  <app-selector
+    (SelectChartType)="changeChartType($event)"
+    (SelectDateRange)="changeDateRange($event)"
+  ></app-selector>
   <mat-card class="dashboard-card">
     <mat-card-header>
       <mat-card-title>

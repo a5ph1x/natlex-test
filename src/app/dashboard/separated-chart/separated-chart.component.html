@@ -1,6 +1,9 @@
 <div class="grid-container">
-  <app-selector (SelectChartType)="changeChartType($event)"></app-selector>
-
+  <app-selector
+    (SelectChartType)="changeChartType($event)"
+    (SelectDateRange)="changeDateRange()"
+  ></app-selector>
+<!-- node 1 -->
   <mat-card class="dashboard-card">
     <mat-card-header>
       <mat-card-title>
@@ -10,12 +13,13 @@
     <mat-card-content class="dashboard-card-content">
       <highcharts-chart
         [Highcharts]="highcharts"
-        [options]="chartOptions"
+        [options]="chartOptions1"
+        [(update)]="updateFlag"
         style="width: 100%; height: 400px; display: block;"
       ></highcharts-chart>
     </mat-card-content>
   </mat-card>
-
+<!-- node 2 -->
   <mat-card class="dashboard-card">
     <mat-card-header>
       <mat-card-title>
@@ -25,12 +29,13 @@
     <mat-card-content class="dashboard-card-content">
       <highcharts-chart
         [Highcharts]="highcharts"
-        [options]="chartOptions"
+        [options]="chartOptions2"
+        [(update)]="updateFlag"
         style="width: 100%; height: 400px; display: block;"
       ></highcharts-chart>
     </mat-card-content>
   </mat-card>
-
+<!-- node 3 -->
   <mat-card class="dashboard-card">
     <mat-card-header>
       <mat-card-title>
@@ -40,7 +45,8 @@
     <mat-card-content class="dashboard-card-content">
       <highcharts-chart
         [Highcharts]="highcharts"
-        [options]="chartOptions"
+        [options]="chartOptions3"
+        [(update)]="updateFlag"
         style="width: 100%; height: 400px; display: block;"
       ></highcharts-chart>
     </mat-card-content>

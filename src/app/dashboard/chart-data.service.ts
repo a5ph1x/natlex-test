@@ -8,8 +8,16 @@ export class ChartDataService {
   constructor() {
   }
 
-  temperatureSensor: Array<number> = Array.from({length: 10}, () => Math.trunc(Math.random() * 1e4));
-  humiditySensor: Array<number> = Array.from({length: 10}, () => Math.trunc(Math.random() * 1e4));
-  lightSensor: Array<number> = Array.from({length: 10}, () => Math.trunc(Math.random() * 1e4));
+  temperatureSensor(): Array<number> {
+    return Array.from({length: 10}, () => Math.trunc(Math.random() * 1e4));
+  }
+
+  humiditySensor(): Array<number> {
+    return Array.from({length: 10}, () => Math.trunc(Math.random() * 1e4));
+  }
+
+  lightSensor(): Array<number> {
+    return Array.from({length: 10}, () => Math.trunc(Math.random() * 1e4));
+  }
 
 }

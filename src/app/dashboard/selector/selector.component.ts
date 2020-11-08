@@ -1,4 +1,5 @@
 import {Component, EventEmitter, Output} from '@angular/core';
+import {FormControl, FormGroup} from '@angular/forms';
 
 interface ChartType {
   value: string;
@@ -10,14 +11,28 @@ interface ChartType {
   styleUrls: ['./selector.component.css']
 })
 export class SelectorComponent {
-  chartTypes: Array<ChartType> = [
-    {value: 'line'},
-    {value: 'bar'}
-  ];
-
-  @Output() SelectChartType: EventEmitter<string> = new EventEmitter<string>();
-  selectedChartType = 'line';
 
   constructor() {
+  }
+
+  chartTypes: Array<ChartType> = [
+    {value: 'line'},
+    {value: 'bar'},
+  ];
+
+  range = new FormGroup({
+    start: new FormControl(),
+    end: new FormControl()
+  });
+
+  @Output() SelectChartType: EventEmitter<string> = new EventEmitter<string>();
+  @Output() SelectDateRange: EventEmitter<any> = new EventEmitter<any>();
+
+  selectedChartType = this.chartTypes[1].value;
+
+  onClose(): void {
+    if (this.range.value.end) {
+      this.SelectDateRange.emit(this.range.value);
+    }
   }
 }

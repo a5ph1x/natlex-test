@@ -1,4 +1,4 @@
-import {ChangeDetectionStrategy, ChangeDetectorRef, Component} from '@angular/core';
+import {Component} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import {ChartDataService} from '../chart-data.service';
 
@@ -12,37 +12,42 @@ export class CombinedChartComponent {
   constructor(private chartData: ChartDataService) {
   }
 
-  chartType = 'line';
-  updateFlag = true;
+  chartType: string;
+  updateFlag = false;
 
   highcharts: typeof Highcharts = Highcharts;
   chartOptions: Highcharts.Options = {
     title: {
       text: 'All nodes data'
     },
-    xAxis: {
-      categories: ['Node 1', 'Node 2', 'Node 3']
-    },
     series: [
       {
         type: 'column',
         name: 'Temperature',
-        data: this.chartData.temperatureSensor,
+        data: this.chartData.temperatureSensor(),
       },
       {
         type: 'column',
         name: 'Humidity',
-        data: this.chartData.humiditySensor
+        data: this.chartData.humiditySensor(),
       },
       {
         type: 'column',
         name: 'Light',
-        data: this.chartData.lightSensor
+        data: this.chartData.lightSensor(),
       }
     ]
   };
 
-  changeChartType(chartType: string): void {
-    this.chartOptions.series[0].type = 'line';
+  changeChartType(chartType: any): void {
+    this.chartOptions.series.forEach(e => e.type = chartType);
+    this.updateFlag = true;
+  }
+
+  changeDateRange(): void {
+    this.chartOptions.series[0].data = this.chartData.temperatureSensor();
+    this.chartOptions.series[1].data = this.chartData.humiditySensor();
+    this.chartOptions.series[2].data = this.chartData.lightSensor();
+    this.updateFlag = true;
   }
 }

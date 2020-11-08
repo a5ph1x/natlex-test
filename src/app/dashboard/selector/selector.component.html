@@ -1,4 +1,4 @@
-<mat-form-field appearance="fill">
+<mat-form-field appearance="fill" style="padding-right: 15px">
   <mat-label>Chart type</mat-label>
   <mat-select
     [(value)]="selectedChartType"
@@ -8,4 +8,14 @@
       {{chartType.value}}
     </mat-option>
   </mat-select>
+</mat-form-field>
+
+<mat-form-field appearance="fill">
+  <mat-label>Select period</mat-label>
+  <mat-date-range-input (close)="onClose()" [rangePicker]="picker" [formGroup]="range">
+    <input matStartDate formControlName="start" placeholder="Start date">
+    <input (ngModelChange)="onClose()" matEndDate formControlName="end" placeholder="End date">
+  </mat-date-range-input>
+  <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+  <mat-date-range-picker #picker></mat-date-range-picker>
 </mat-form-field>

@@ -26,6 +26,9 @@ import { SeparatedChartComponent } from './dashboard/separated-chart/separated-c
 import {HighchartsChartModule} from 'highcharts-angular';
 import { SelectorComponent } from './dashboard/selector/selector.component';
 import {MatFormFieldModule} from '@angular/material/form-field';
+import {MatDatepickerModule} from '@angular/material/datepicker';
+import {MatNativeDateModule} from '@angular/material/core';
+import {ReactiveFormsModule} from '@angular/forms';
 
 @NgModule({
   declarations: [
@@ -57,6 +60,9 @@ import {MatFormFieldModule} from '@angular/material/form-field';
     MatFormFieldModule,
     HighchartsChartModule,
     MatSelectModule,
+    MatDatepickerModule,
+    MatNativeDateModule,
+    ReactiveFormsModule
   ],
   providers: [],
   bootstrap: [AppComponent]
