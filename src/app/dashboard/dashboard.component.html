@@ -1,19 +1,11 @@
 <div class="grid-container">
   <h1 class="mat-h1">Dashboard</h1>
-  <mat-grid-list cols="1" rowHeight="350px">
-    <ng-container *ngFor="let card of cards">
-      <mat-grid-tile *ngIf="card.visible">
-        <mat-card class="dashboard-card">
-          <mat-card-header>
-            <mat-card-title>
-              {{card.title}}
-            </mat-card-title>
-          </mat-card-header>
-          <mat-card-content class="dashboard-card-content">
-            <div>Card Content Here</div>
-          </mat-card-content>
-        </mat-card>
-      </mat-grid-tile>
-    </ng-container>
-  </mat-grid-list>
+  <mat-divider></mat-divider>
+  <p>
+    <mat-button-toggle-group name="chartOption" (change)="changeChartType($event.value)">
+      <mat-button-toggle value="combined" checked>Combined</mat-button-toggle>
+      <mat-button-toggle value="separated">Separated</mat-button-toggle>
+    </mat-button-toggle-group>
+  </p>
+  <router-outlet></router-outlet>
 </div>

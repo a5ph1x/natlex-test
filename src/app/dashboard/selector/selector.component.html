@@ -1,0 +1,11 @@
+<mat-form-field appearance="fill">
+  <mat-label>Chart type</mat-label>
+  <mat-select
+    [(value)]="selectedChartType"
+    (selectionChange)="SelectChartType.emit(selectedChartType)"
+  >
+    <mat-option *ngFor="let chartType of chartTypes" [value]="chartType.value">
+      {{chartType.value}}
+    </mat-option>
+  </mat-select>
+</mat-form-field>
