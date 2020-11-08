@@ -11,8 +11,11 @@ export class DashboardComponent {
   constructor(private router: Router) {
   }
 
+  checked = true;
+
   changeChartType(chartType: string): void {
     this.router.navigate(['dashboard', chartType]);
+    this.checked = !this.checked;
   }
 
 }
