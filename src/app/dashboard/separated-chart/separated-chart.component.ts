@@ -62,10 +62,10 @@ export class SeparatedChartComponent {
     this.updateFlag = true;
   }
 
-  changeDateRange(dateRange: any): void {
-    this.chartOptions1.series[0].data = this.chartData.temperatureSensor();
-    this.chartOptions2.series[0].data = this.chartData.humiditySensor();
-    this.chartOptions3.series[0].data = this.chartData.lightSensor();
+  changeDateRange(): void {
+    this.chartOptions1.series[0]['data'] = this.chartData.temperatureSensor();
+    this.chartOptions2.series[0]['data'] = this.chartData.humiditySensor();
+    this.chartOptions3.series[0]['data'] = this.chartData.lightSensor();
     this.updateFlag = true;
   }
 }

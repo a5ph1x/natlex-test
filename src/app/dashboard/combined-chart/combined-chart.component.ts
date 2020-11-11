@@ -1,3 +1,4 @@
+/* tslint:disable:no-string-literal */
 import {Component} from '@angular/core';
 import * as Highcharts from 'highcharts';
 import {ChartDataService} from '../chart-data.service';
@@ -45,9 +46,9 @@ export class CombinedChartComponent {
   }
 
   changeDateRange(): void {
-    this.chartOptions.series[0].data = this.chartData.temperatureSensor();
-    this.chartOptions.series[1].data = this.chartData.humiditySensor();
-    this.chartOptions.series[2].data = this.chartData.lightSensor();
+    this.chartOptions.series[0]['data'] = this.chartData.temperatureSensor();
+    this.chartOptions.series[1]['data'] = this.chartData.humiditySensor();
+    this.chartOptions.series[2]['data'] = this.chartData.lightSensor();
     this.updateFlag = true;
   }
 }
